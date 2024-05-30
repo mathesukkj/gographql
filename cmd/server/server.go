@@ -8,6 +8,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
+	_ "github.com/mattn/go-sqlite3"
 
 	"github.com/mathesukkj/gographql/graph"
 	"github.com/mathesukkj/gographql/internal/database"
@@ -22,7 +23,7 @@ func main() {
 	}
 	defer db.Close()
 
-	categoryDb := database.NewCategory(db)
+	categoryDb := database.NewCategoryDb(db)
 
 	port := os.Getenv("PORT")
 	if port == "" {
